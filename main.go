@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/jackc/pgx/v4/pgxpool"
 	pb "golang_url_shortener/proto"
+	"reflect"
 
 	"google.golang.org/grpc"
 	"log"
@@ -59,11 +60,11 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
 	someshortlink := "abracadabra"
-
-	link := &Link{}
-	err := s.db.QueryRow(ctx, "SELECT id, full, short FROM urls WHERE short=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
-	if err != nil {
-		fmt.Println(err)}
+	fmt.Println(reflect.TypeOf(in))
+	//link := &Link{}
+	//err := s.db.QueryRow(ctx, "SELECT id, full, short FROM urls WHERE short=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
+	//if err != nil {
+	//	fmt.Println(err)}
 
 
 //	sql_query := fmt.Sprintf(`
