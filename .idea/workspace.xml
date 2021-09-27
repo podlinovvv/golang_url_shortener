@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="634b6abd-2b5f-4ca9-bc34-470c1a18fbfd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/Client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/Client.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +74,7 @@
       <recent name="C:\Users\User\go\src\golang_url_shortener\server" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build golang_url_shortener">
+  <component name="RunManager" selected="Go Build.go build Client.go">
     <configuration name="go build Client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="golang_url_shortener" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -98,12 +100,12 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build golang_url_shortener/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="golang_url_shortener" />
       <working_directory value="$PROJECT_DIR$/" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/client/Client.go" />
-      <package value="golang_url_shortener/client" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="golang_url_shortener" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
@@ -126,11 +128,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build Client.go" />
+        <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build golang_url_shortener" />
         <item itemvalue="Go Build.go build Shortener_Server.go" />
         <item itemvalue="Go Build.go build scratch_3.go" />
-        <item itemvalue="Go Build.go build Client.go" />
-        <item itemvalue="Go Build.go build golang_url_shortener/client" />
       </list>
     </recent_temporary>
   </component>
@@ -177,22 +179,22 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1632668364567" />
-    <state width="1431" height="211" key="GridCell.Tab.0.bottom" timestamp="1632743866833">
+    <state width="1428" height="211" key="GridCell.Tab.0.bottom" timestamp="1632770874029">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1431" height="211" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1632743866833" />
-    <state width="1431" height="211" key="GridCell.Tab.0.center" timestamp="1632743866833">
+    <state width="1428" height="211" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1632770874029" />
+    <state width="1428" height="211" key="GridCell.Tab.0.center" timestamp="1632770874029">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1431" height="211" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1632743866833" />
-    <state width="1431" height="211" key="GridCell.Tab.0.left" timestamp="1632743866833">
+    <state width="1428" height="211" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1632770874029" />
+    <state width="1428" height="211" key="GridCell.Tab.0.left" timestamp="1632770874029">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1431" height="211" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1632743866833" />
-    <state width="1431" height="211" key="GridCell.Tab.0.right" timestamp="1632743866833">
+    <state width="1428" height="211" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1632770874029" />
+    <state width="1428" height="211" key="GridCell.Tab.0.right" timestamp="1632770874029">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1431" height="211" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1632743866833" />
+    <state width="1428" height="211" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1632770874029" />
     <state x="355" y="105" key="SettingsEditor" timestamp="1632668910627">
       <screen x="0" y="0" width="1707" height="920" />
     </state>

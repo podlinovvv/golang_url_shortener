@@ -25,5 +25,4 @@ COPY --from=builder /main .
 
 EXPOSE 50051
 
-
 CMD ["/main"]

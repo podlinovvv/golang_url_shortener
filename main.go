@@ -66,7 +66,6 @@ func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl
 	//if err != nil {
 	//	fmt.Println(err)}
 
-
 //	sql_query := fmt.Sprintf(`
 //	INSERT INTO urls (full,short)
 //SELECT * FROM (SELECT %s AS full, %s AS short) AS temp
@@ -113,11 +112,11 @@ func main() {
 	server.db = pool
 
 	createSql := `
-	create table if not exists urls(
-		id int,
-		full text,
-		short text);
-	`
+	create table if not exists urls (
+		Id int,
+		FullUrl VARCHAR(2048),
+		ShortUrl VARCHAR(2048)
+	);`
 	_, err = server.db.Exec(context.Background(), createSql)
 	if err != nil {}
 

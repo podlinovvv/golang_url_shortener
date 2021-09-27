@@ -29,7 +29,7 @@ func main() {
 
 	var new_urls  = [3]string{"32243", "4343", "435435"}
 	for _, val := range new_urls {
-		response, err := c.Create(ctx, &pb.FullUrl{Url: val})
+		response, err := c.Get(ctx, &pb.ShortUrl{Link: val})
 		if err != nil {
 			log.Fatal(err)
 		} else {
