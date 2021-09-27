@@ -78,13 +78,13 @@ func main() {
 	//database_url := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
 	//conn, err := pgx.Connect(context.Background(), database_url)
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
-		"postgres",
-		url.QueryEscape("db_user"),
-		url.QueryEscape("pwd123"),
+		"postgresql",
+		url.QueryEscape("userdb"),
+		url.QueryEscape("mysecretpassword"),
 		"0.0.0.0",
 		"5432",
 		"postgres",
-		5)
+		15)
 	ctx, _ := context.WithCancel(context.Background())
 
 	//Сконфигурируем пул, задав для него максимальное количество соединений
@@ -112,5 +112,5 @@ func main() {
 
 	}
 
-	//select {}
+	select {}
 }
