@@ -20,21 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="634b6abd-2b5f-4ca9-bc34-470c1a18fbfd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/Client.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/golang_url_shortener.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/golang_url_shortener.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/shortener.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/shortener.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener.proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/proto/shortener_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener_grpc.pb.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/Shortener_Server.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

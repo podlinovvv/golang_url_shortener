@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=db_user
       - POSTGRES_PASSWORD='pwd123'
-  go_check4:
+  go_check6:
       build: .
       environment:
         DB_ADDR: postgresql

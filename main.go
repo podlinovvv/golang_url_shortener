@@ -81,9 +81,9 @@ func main() {
 		"postgres",
 		url.QueryEscape("db_user"),
 		url.QueryEscape("pwd123"),
-		"localhost",
+		"0.0.0.0",
 		"5432",
-		"db_test",
+		"postgres",
 		5)
 	ctx, _ := context.WithCancel(context.Background())
 
@@ -104,7 +104,6 @@ func main() {
 
 	//Создаём grpc сервер и регистрируем его как сервер для ссервиса укорачивания
 	lis, err := net.Listen("tcp", port)
-
 	s := grpc.NewServer()
 	pb.RegisterShortenerServiceServer(s, server)
 
