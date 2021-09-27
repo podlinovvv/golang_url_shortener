@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="634b6abd-2b5f-4ca9-bc34-470c1a18fbfd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/Client.go" beforeDir="false" afterPath="$PROJECT_DIR$/client/Client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,13 +108,15 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build scratch_3.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Test_sum in scratch_7_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="golang_url_shortener" />
-      <working_directory value="$PROJECT_DIR$/" />
+      <working_directory value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <framework value="gotest" />
       <kind value="FILE" />
-      <filePath value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.go" />
       <package value="golang_url_shortener" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="$APPLICATION_CONFIG_DIR$/scratches/scratch_7_test.go" />
+      <pattern value="^Test_sum$" />
       <method v="2" />
     </configuration>
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile">
@@ -128,10 +130,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build Client.go" />
+        <item itemvalue="Go Test.Test_sum in scratch_7_test.go" />
         <item itemvalue="Go Build.go build main.go" />
         <item itemvalue="Go Build.go build golang_url_shortener" />
         <item itemvalue="Go Build.go build Shortener_Server.go" />
-        <item itemvalue="Go Build.go build scratch_3.go" />
       </list>
     </recent_temporary>
   </component>
@@ -178,22 +180,22 @@
       <screen x="0" y="0" width="1707" height="920" />
     </state>
     <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1632668364567" />
-    <state width="1424" height="211" key="GridCell.Tab.0.bottom" timestamp="1632772905716">
+    <state width="1422" height="201" key="GridCell.Tab.0.bottom" timestamp="1632784901207">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1424" height="211" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1632772905716" />
-    <state width="1424" height="211" key="GridCell.Tab.0.center" timestamp="1632772905716">
+    <state width="1422" height="201" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1632784901207" />
+    <state width="1422" height="201" key="GridCell.Tab.0.center" timestamp="1632784901206">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1424" height="211" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1632772905716" />
-    <state width="1424" height="211" key="GridCell.Tab.0.left" timestamp="1632772905716">
+    <state width="1422" height="201" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1632784901206" />
+    <state width="1422" height="201" key="GridCell.Tab.0.left" timestamp="1632784901206">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1424" height="211" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1632772905716" />
-    <state width="1424" height="211" key="GridCell.Tab.0.right" timestamp="1632772905716">
+    <state width="1422" height="201" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1632784901206" />
+    <state width="1422" height="201" key="GridCell.Tab.0.right" timestamp="1632784901206">
       <screen x="0" y="0" width="1707" height="920" />
     </state>
-    <state width="1424" height="211" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1632772905716" />
+    <state width="1422" height="201" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1632784901206" />
     <state x="355" y="105" key="SettingsEditor" timestamp="1632668910627">
       <screen x="0" y="0" width="1707" height="920" />
     </state>

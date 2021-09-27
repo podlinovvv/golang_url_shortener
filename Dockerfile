@@ -10,16 +10,12 @@ COPY proto/ /usr/local/go/src/golang_url_shortener/proto
 COPY main.go /usr/local/go/src/golang_url_shortener
 # Build the application
 WORKDIR /build
-COPY .. .
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
-
+COPY . .
 RUN go build -o /main
 
 #########
 # second stage to obtain a very small image
-FROM scratch
+FROM alpine
 
 COPY --from=builder /main .
 

@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"github.com/jackc/pgx/v4/pgxpool"
 	pb "golang_url_shortener/proto"
-	"reflect"
-
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -60,9 +58,9 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
 	//someshortlink := "abracadabra"
-	fmt.Println(reflect.TypeOf(in))
+	//fmt.Println(reflect.TypeOf(in))
 	link := &Link{}
-	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
+	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", in.Link ).Scan(&link.id, &link.full, &link.short)
 	if err != nil {
 		fmt.Println(err)}
 
@@ -122,7 +120,7 @@ func main() {
 
 	testInsert := `
 	insert into urls (Id,FullUrl,ShortUrl)
-	values (1, "test","test");`
+	values (1, 'test','test');`
 	_, err = server.db.Exec(context.Background(), testInsert)
 	if err != nil {}
 
@@ -135,6 +133,6 @@ func main() {
 		log.Fatalf("failed to serve %v", err)
 
 	}
-
+	fmt.Println("Connection OK2!")
 	select {}
 }
