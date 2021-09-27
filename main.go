@@ -27,12 +27,7 @@ func NewShortenerServer() *ShortenerServer {
 }
 
 func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error) {
-	createSql := `
-create table if not exists urls(
-	full text,
-	short text);
-`
-	_, err := s.db.Exec(context.Background(), createSql)
+
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -99,9 +94,21 @@ func main() {
 	}else{fmt.Fprintf(os.Stderr, "good")}
 	fmt.Println("Connection OK!")
 
+
+
+
+
+
 	var server = NewShortenerServer()
 	server.db = pool
 
+	createSql := `
+create table if not exists urls(
+	full text,
+	short text);
+`
+	_, err = server.db.Exec(context.Background(), createSql)
+	if err != nil {}
 	//Создаём grpc сервер и регистрируем его как сервер для ссервиса укорачивания
 	lis, err := net.Listen("tcp", port)
 	s := grpc.NewServer()
