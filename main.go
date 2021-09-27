@@ -59,12 +59,12 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 }
 
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
-	someshortlink := "abracadabra"
+	//someshortlink := "abracadabra"
 	fmt.Println(reflect.TypeOf(in))
-	//link := &Link{}
-	//err := s.db.QueryRow(ctx, "SELECT id, full, short FROM urls WHERE short=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
-	//if err != nil {
-	//	fmt.Println(err)}
+	link := &Link{}
+	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE short=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
+	if err != nil {
+		fmt.Println(err)}
 
 //	sql_query := fmt.Sprintf(`
 //	INSERT INTO urls (full,short)
@@ -80,7 +80,7 @@ func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl
 	//	fmt.Fprintf(os.Stderr, "Ping failed: %v\n", err)
 	//	os.Exit(1)
 	//}
-	return &pb.FullUrl{Url: someshortlink}, nil
+	return &pb.FullUrl{Url: link.full}, nil
 }
 
 func main() {
