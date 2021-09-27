@@ -1,16 +1,21 @@
-version: '3.8'
+version: '3'
 services:
-  postgresql:
+  postgres:
+    container_name: composepostgres
+    image: postgres:alpine
     environment:
       - POSTGRES_USER=userdb
-      - POSTGRES_PASSWORD=mysecretpassword
-    image: postgres:alpine
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=mydb
+      - POSTGRES_HOST_AUTH_METHOD=trust
     restart: always
     ports:
-      - 5432:5432
+      - "5432:5432"
 
-  go_check80:
+  go_service:
       build: .
+      links:
+        - postgres
       entrypoint: /main
       restart: always
       ports:

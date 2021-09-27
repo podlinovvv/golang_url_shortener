@@ -58,11 +58,11 @@ create table if not exists urls(
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
 	someshortlink := "abracadabra"
 	sql_query := fmt.Sprintf(`
-	INSERT INTO customer_details (customer_name,customer_address)
-SELECT * FROM (SELECT %s AS customer_name, %s AS customer_address) AS temp
+	INSERT INTO urls (full,short)
+SELECT * FROM (SELECT %s AS full, %s AS short) AS temp
 WHERE NOT EXISTS (
-    SELECT customer_name FROM customer_details WHERE customer_name = %s
-) LIMIT 1;
+    SELECT full FROM urls WHERE full = %s
+) LIMIT 1;;
 	`, someshortlink, someshortlink, someshortlink)
 
 	_, err := s.db.Exec(ctx, sql_query)
@@ -80,10 +80,10 @@ func main() {
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
 		"postgresql",
 		url.QueryEscape("userdb"),
-		url.QueryEscape("mysecretpassword"),
-		"0.0.0.0",
+		url.QueryEscape("123"),
+		"localhost",
 		"5432",
-		"postgres",
+		"mydb",
 		15)
 	ctx, _ := context.WithCancel(context.Background())
 
