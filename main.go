@@ -26,6 +26,11 @@ func NewShortenerServer() *ShortenerServer {
 	return &ShortenerServer{}
 }
 
+func GenerateShortUrl() (surl string){
+
+	return
+}
+
 func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error) {
 
 	var sr string = "33222"
@@ -40,7 +45,7 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	tx.Commit(context.Background())
 
 	return &pb.ShortUrl{Link: sr}, nil
@@ -70,10 +75,10 @@ func main() {
 	//conn, err := pgx.Connect(context.Background(), database_url)
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
 		"postgresql",
-		url.QueryEscape("userdb"),
-		url.QueryEscape("123"),
-		"localhost",
-		"5432",
+		url.QueryEscape("user_name"),
+		url.QueryEscape("pass"),
+		"postgres",
+		"54320",
 		"mydb",
 		15)
 	ctx, _ := context.WithCancel(context.Background())
