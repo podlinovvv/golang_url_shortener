@@ -1,19 +1,24 @@
-version: '3.3'
+version: '3'
 services:
-  postgres7:
-    image: postgres:alpine
+  pgdb:
+    image: "postgres:11"
+    container_name: "pgdb"
     environment:
-      - POSTGRES_USER= user_name
-      - POSTGRES_PASSWORD= pass
-    restart: always
+      - POSTGRES_USER=db_user
+      - POSTGRES_PASSWORD=pwd123
     ports:
       - "54320:5432"
-  go_service17:
+    networks:
+      - "myNetwork"
+  go_service:
     build: .
     depends_on:
-      - postgres
+      - pgdb
     entrypoint: /main
     restart: always
     ports:
       - 50051:50051
-
+    networks:
+      - "myNetwork"
+networks:
+  myNetwork:

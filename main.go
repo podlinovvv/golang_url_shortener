@@ -76,10 +76,10 @@ func main() {
 	//connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/?sslmode=disable&connect_timeout=%d",
 		"postgresql",
-		url.QueryEscape("user_name"),
-		url.QueryEscape("pass"),
-		"postgres7",
-		"54320",
+		url.QueryEscape("db_user"),
+		url.QueryEscape("pwd123"),
+		"pgdb",
+		"5432",
 		15)
 	ctx, _ := context.WithCancel(context.Background())
 
