@@ -27,7 +27,7 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 
-	var new_urls  = [3]string{"32243", "4343", "435435"}
+	var new_urls  = [3]string{"test", "4343", "435435"}
 	for _, val := range new_urls {
 		response, err := c.Get(ctx, &pb.ShortUrl{Link: val})
 		if err != nil {

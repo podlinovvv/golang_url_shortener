@@ -62,7 +62,7 @@ func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl
 	//someshortlink := "abracadabra"
 	fmt.Println(reflect.TypeOf(in))
 	link := &Link{}
-	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE short=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
+	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", in ).Scan(&link.id, &link.full, &link.short)
 	if err != nil {
 		fmt.Println(err)}
 
@@ -120,6 +120,11 @@ func main() {
 	_, err = server.db.Exec(context.Background(), createSql)
 	if err != nil {}
 
+	testInsert := `
+	insert into urls (Id,FullUrl,ShortUrl)
+	values (1, "test","test");`
+	_, err = server.db.Exec(context.Background(), testInsert)
+	if err != nil {}
 
 	//Создаём grpc сервер и регистрируем его как сервер для ссервиса укорачивания
 	lis, err := net.Listen("tcp", port)
