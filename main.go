@@ -73,13 +73,13 @@ WHERE NOT EXISTS (
 func main() {
 	//database_url := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
 	//conn, err := pgx.Connect(context.Background(), database_url)
-	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
+	//connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
+	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/?sslmode=disable&connect_timeout=%d",
 		"postgresql",
 		url.QueryEscape("user_name"),
 		url.QueryEscape("pass"),
-		"postgres",
+		"postgres7",
 		"54320",
-		"mydb",
 		15)
 	ctx, _ := context.WithCancel(context.Background())
 
