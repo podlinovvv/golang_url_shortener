@@ -28,13 +28,9 @@ func NewShortenerServer() *ShortenerServer {
 
 func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error) {
 
-	if err != nil {
-		fmt.Println(err)
-	}
-
 	var sr string = "33222"
 	var sr2 string = "33222333"
-	log.Printf("var1 = %T\n", in)
+
 	tx, err := s.db.Begin(context.Background())
 	if err != nil {
 		log.Fatal(err)
@@ -44,7 +40,7 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	
 	tx.Commit(context.Background())
 
 	return &pb.ShortUrl{Link: sr}, nil
