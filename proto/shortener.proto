@@ -6,12 +6,13 @@ option go_package = "golang_url_shortener/go-shortener-grpc;go_shortener_grpc";
 
 service ShortenerService {
   rpc Create (FullUrl) returns (ShortUrl) {}
+  rpc Get (ShortUrl) returns (FullUrl) {}
 }
-
+//полный URL
 message FullUrl {
   string url = 1;
 }
-
+//сокращённый URL
 message ShortUrl{
   string link = 1;
 }

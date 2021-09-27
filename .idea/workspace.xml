@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="634b6abd-2b5f-4ca9-bc34-470c1a18fbfd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/Client.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/golang_url_shortener.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/golang_url_shortener.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/shortener.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/shortener.proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener.proto" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proto/shortener_grpc.pb.go" beforeDir="false" afterPath="$PROJECT_DIR$/proto/shortener_grpc.pb.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/Shortener_Server.go" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="D:\GOLANG\sdk\go1.16.7" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1ygBTcqDWQLYAk0OKKsew44s8bS" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="go" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\go\src\golang_url_shortener" />
+      <recent name="C:\Users\User\go\src\golang_url_shortener\server" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Go Build.go build golang_url_shortener">
+    <configuration name="go build Client.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_url_shortener" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/client/Client.go" />
+      <package value="golang_url_shortener" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build Shortener_Server.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_url_shortener" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/server/Shortener_Server.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build golang_url_shortener" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_url_shortener" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="golang_url_shortener" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build golang_url_shortener/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_url_shortener" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/client/Client.go" />
+      <package value="golang_url_shortener/client" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build scratch_3.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="golang_url_shortener" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.go" />
+      <package value="golang_url_shortener" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="sourceFilePath" value="Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build golang_url_shortener" />
+        <item itemvalue="Go Build.go build Shortener_Server.go" />
+        <item itemvalue="Go Build.go build scratch_3.go" />
+        <item itemvalue="Go Build.go build Client.go" />
+        <item itemvalue="Go Build.go build golang_url_shortener/client" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="564" y="0" key="#Dockerfile" timestamp="1632690967959">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="564" y="0" key="#Dockerfile/0.0.1707.920@0.0.1707.920" timestamp="1632690967959" />
+    <state x="646" y="294" key="#Go_Modules" timestamp="1632669366196">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="646" y="294" key="#Go_Modules/0.0.1707.920@0.0.1707.920" timestamp="1632669366196" />
+    <state x="309" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632692876333">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="309" y="115" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1707.920@0.0.1707.920" timestamp="1632692876333" />
+    <state x="584" y="207" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1632736416414">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="584" y="207" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1707.920@0.0.1707.920" timestamp="1632736416414" />
+    <state x="564" y="87" key="#go_build_Shortener_Server.go" timestamp="1632663439057">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="564" y="87" key="#go_build_Shortener_Server.go/0.0.1707.920@0.0.1707.920" timestamp="1632663439057" />
+    <state x="634" y="215" key="FileChooserDialogImpl" timestamp="1632668364567">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="634" y="215" key="FileChooserDialogImpl/0.0.1707.920@0.0.1707.920" timestamp="1632668364567" />
+    <state width="1433" height="212" key="GridCell.Tab.0.bottom" timestamp="1632738954564">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1433" height="212" key="GridCell.Tab.0.bottom/0.0.1707.920@0.0.1707.920" timestamp="1632738954564" />
+    <state width="1433" height="212" key="GridCell.Tab.0.center" timestamp="1632738954564">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1433" height="212" key="GridCell.Tab.0.center/0.0.1707.920@0.0.1707.920" timestamp="1632738954564" />
+    <state width="1433" height="212" key="GridCell.Tab.0.left" timestamp="1632738954564">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1433" height="212" key="GridCell.Tab.0.left/0.0.1707.920@0.0.1707.920" timestamp="1632738954564" />
+    <state width="1433" height="212" key="GridCell.Tab.0.right" timestamp="1632738954564">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state width="1433" height="212" key="GridCell.Tab.0.right/0.0.1707.920@0.0.1707.920" timestamp="1632738954564" />
+    <state x="355" y="105" key="SettingsEditor" timestamp="1632668910627">
+      <screen x="0" y="0" width="1707" height="920" />
+    </state>
+    <state x="355" y="105" key="SettingsEditor/0.0.1707.920@0.0.1707.920" timestamp="1632668910627" />
+  </component>
+</project>

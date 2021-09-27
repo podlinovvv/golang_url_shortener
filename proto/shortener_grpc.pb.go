@@ -19,6 +19,7 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ShortenerServiceClient interface {
 	Create(ctx context.Context, in *FullUrl, opts ...grpc.CallOption) (*ShortUrl, error)
+	Get(ctx context.Context, in *ShortUrl, opts ...grpc.CallOption) (*FullUrl, error)
 }
 
 type shortenerServiceClient struct {
@@ -38,11 +39,21 @@ func (c *shortenerServiceClient) Create(ctx context.Context, in *FullUrl, opts .
 	return out, nil
 }
 
+func (c *shortenerServiceClient) Get(ctx context.Context, in *ShortUrl, opts ...grpc.CallOption) (*FullUrl, error) {
+	out := new(FullUrl)
+	err := c.cc.Invoke(ctx, "/shortener.ShortenerService/Get", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ShortenerServiceServer is the server API for ShortenerService service.
 // All implementations must embed UnimplementedShortenerServiceServer
 // for forward compatibility
 type ShortenerServiceServer interface {
 	Create(context.Context, *FullUrl) (*ShortUrl, error)
+	Get(context.Context, *ShortUrl) (*FullUrl, error)
 	mustEmbedUnimplementedShortenerServiceServer()
 }
 
@@ -52,6 +63,9 @@ type UnimplementedShortenerServiceServer struct {
 
 func (UnimplementedShortenerServiceServer) Create(context.Context, *FullUrl) (*ShortUrl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
+}
+func (UnimplementedShortenerServiceServer) Get(context.Context, *ShortUrl) (*FullUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
 func (UnimplementedShortenerServiceServer) mustEmbedUnimplementedShortenerServiceServer() {}
 
@@ -84,6 +98,24 @@ func _ShortenerService_Create_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ShortenerService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ShortUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ShortenerServiceServer).Get(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/shortener.ShortenerService/Get",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ShortenerServiceServer).Get(ctx, req.(*ShortUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ShortenerService_ServiceDesc is the grpc.ServiceDesc for ShortenerService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -94,6 +126,10 @@ var ShortenerService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Create",
 			Handler:    _ShortenerService_Create_Handler,
+		},
+		{
+			MethodName: "Get",
+			Handler:    _ShortenerService_Get_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
