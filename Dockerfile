@@ -6,10 +6,12 @@ ENV GO111MODULE=on \
     GOOS=linux \
     GOARCH=amd64
 
-COPY proto/ /usr/local/go/src/golang_url_shortener/proto
-COPY main.go /usr/local/go/src/golang_url_shortener
+
 # Build the application
 WORKDIR /build
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
 COPY . .
 RUN go build -o /main
 
