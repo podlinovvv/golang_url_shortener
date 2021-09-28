@@ -1,17 +1,12 @@
 package main
 
 import (
-	"context"
-	"fmt"
 	pb "golang_url_shortener/proto"
 	repository "golang_url_shortener/repository"
 	"golang_url_shortener/url_server"
 	"log"
 	"net"
-	"net/url"
-	"os"
 
-	"github.com/jackc/pgx/v4/pgxpool"
 	"google.golang.org/grpc"
 )
 
@@ -19,43 +14,8 @@ const (
 	port = ":50051"
 )
 
-func InitDb() (*pgxpool.Pool, error) {
-	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/?sslmode=disable&connect_timeout=%d",
-		"postgresql",
-		url.QueryEscape("db_user"),
-		url.QueryEscape("pwd123"),
-		"pgdb",
-		"5432",
-		15)
-	ctx := context.Background()
-
-	//Сконфигурируем пул, задав для него максимальное количество соединений
-	poolConfig, _ := pgxpool.ParseConfig(connStr)
-	poolConfig.MaxConns = 1
-
-	//Получаем пул соединений, используя контекст и конфиг
-	pool, err := pgxpool.ConnectConfig(ctx, poolConfig)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Connect to database failed: %v\n", err)
-		os.Exit(1)
-	}
-	fmt.Println("Connection OK!")
-
-	createSql := `
-	create table if not exists urls (
-		Id SERIAL PRIMARY KEY,
-		FullUrl VARCHAR(2048),
-		ShortUrl VARCHAR(2048)
-	);`
-	_, err = pool.Exec(context.Background(), createSql)
-	if err != nil {
-		return nil, err
-	}
-	return pool, nil
-}
-
 func main() {
-	pool, err := InitDb()
+	pool, err := repository.InitDb()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -91,5 +51,4 @@ func main() {
 	//_, err = server.Db.Exec(context.Background(), testInsert)
 	//if err != nil {
 	//}
-	//Создаём grpc сервер и регистрируем его как сервер для ссервиса укорачивания
 }

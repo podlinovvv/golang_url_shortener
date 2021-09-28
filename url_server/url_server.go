@@ -50,6 +50,7 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 		//поиск максимального значения ID в базе
 		var id int
 		id = s.r.FindMaxId(ctx)
+
 		//генерация нового short url
 		result = GenerateShortUrl(id)
 	}
