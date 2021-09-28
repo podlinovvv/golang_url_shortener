@@ -14,6 +14,13 @@ type LinkFromDb struct {
 	Short string
 }
 
+type IRepository interface {
+	FindMaxId(ctx context.Context) int
+	SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *LinkFromDb
+	InsertNewUrl(ctx context.Context, s1 string, s2 string) error
+	SearchShortUrlInDb(ctx context.Context, link string) (string, error)
+}
+
 type Repository struct {
 	Db *pgxpool.Pool
 }

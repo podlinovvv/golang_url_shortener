@@ -11,8 +11,13 @@ import (
 	_ "google.golang.org/grpc"
 )
 
+type IShortener interface {
+	Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error)
+	Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error)
+}
+
 type ShortenerServer struct {
-	r *repository.Repository
+	r repository.IRepository
 	pb.UnimplementedShortenerServiceServer
 }
 
