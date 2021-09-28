@@ -33,49 +33,74 @@ func NewShortenerServer() *ShortenerServer {
 	return &ShortenerServer{}
 }
 
-func GenerateShortUrl(id int) (surl string) {
+func GenerateShortUrl(id int) string {
 	number := strconv.Itoa(id)
 	var inBase string = "0123456789"
 	var toBase string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
 	converted, _, _ := bc.BaseToBase(number, inBase, toBase)
-
 	var nulled string = ""
 	for i := 0; i < (10 - len(converted)); i++ {
 		nulled = nulled + "0"
 	}
 	nulled = nulled + converted
+	fmt.Println(nulled)
 	return nulled
 }
+func findMaxId(ctx context.Context, s *ShortenerServer) int {
+	var id int
+	err := s.db.QueryRow(ctx, "SELECT MAX(Id) FROM urls").Scan(&id)
+	fmt.Println(id, "id из базы")
+	if err != nil {
+		fmt.Println(err)
+	}
+	return id
+}
 
-func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error) {
-
+func SearchFullUrlInDb(ctx context.Context, s *ShortenerServer, in *pb.FullUrl) *LinkFromDb {
 	linkFromDb := &LinkFromDb{}
 	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE FullUrl=$1 LIMIT 1;", in.Url).Scan(&linkFromDb.id, &linkFromDb.full, &linkFromDb.short)
 	if err != nil {
 		fmt.Println(err)
 	}
-	var result string
-	if linkFromDb.id != 0 {
-		fmt.Println("найден в базе")
-		result = linkFromDb.short
-	} else {
-		fmt.Println("не найден в базе")
-		var id int
-		err := s.db.QueryRow(ctx, "SELECT MAX(Id) FROM urls").Scan(&id)
+	return linkFromDb
+}
 
-		fmt.Println(id,"id из базы")
-		if err != nil {
-			fmt.Println(err)
-		}
-		result = GenerateShortUrl(id)
-	}
-
-	insertNewUrl := `
+func insertNewUrl(ctx context.Context, s *ShortenerServer, s1 string, s2 string){
+	insertSql := `
 	insert into urls (FullUrl,ShortUrl)
 	values ($1,$2);`
-	_, err = s.db.Exec(context.Background(), insertNewUrl,in.Url,result)
+	_, err := s.db.Exec(ctx, insertSql, s1, s2)
 	if err != nil {
+		fmt.Println(err)
 	}
+}
+
+func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.ShortUrl, error) {
+	//поиск полного url в базе
+	//linkFromDb := &LinkFromDb{}
+	//err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE FullUrl=$1 LIMIT 1;", in.Url).Scan(&linkFromDb.id, &linkFromDb.full, &linkFromDb.short)
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	//поиск полного url в базе
+	rowFromDb := SearchFullUrlInDb(ctx, s, in)
+
+	var result string
+	if rowFromDb.id != 0 {
+		//fmt.Println("найден в базе")
+		result = rowFromDb.short
+	} else {
+		//fmt.Println("не найден в базе")
+
+		//поиск максимального значения ID в базе
+		var id int
+		id = findMaxId(ctx, s)
+		//генерация нового short url
+		result = GenerateShortUrl(id)
+	}
+	//добавление новых значений fullurl и shorturl в базу
+	insertNewUrl(context.Background(), s, in.Url, result)
+
 	return &pb.ShortUrl{Link: result}, nil
 }
 
@@ -92,9 +117,6 @@ func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl
 }
 
 func main() {
-	//database_url := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
-	//conn, err := pgx.Connect(context.Background(), database_url)
-	//connStr := fmt.Sprintf("%s://%s:%s@%s:%s/%s?sslmode=disable&connect_timeout=%d",
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/?sslmode=disable&connect_timeout=%d",
 		"postgresql",
 		url.QueryEscape("db_user"),
@@ -106,7 +128,7 @@ func main() {
 
 	//Сконфигурируем пул, задав для него максимальное количество соединений
 	poolConfig, _ := pgxpool.ParseConfig(connStr)
-	poolConfig.MaxConns = 5
+	poolConfig.MaxConns = 1
 
 	//Получаем пул соединений, используя контекст и конфиг
 	pool, err := pgxpool.ConnectConfig(ctx, poolConfig)
@@ -160,6 +182,6 @@ func main() {
 		log.Fatalf("failed to serve %v", err)
 
 	}
-	fmt.Println("Connection OK2!")
+	//fmt.Println("Connection OK2!")
 	select {}
 }
