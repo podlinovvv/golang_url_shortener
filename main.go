@@ -65,7 +65,7 @@ func SearchFullUrlInDb(ctx context.Context, s *ShortenerServer, in *pb.FullUrl) 
 	return linkFromDb
 }
 
-func insertNewUrl(ctx context.Context, s *ShortenerServer, s1 string, s2 string){
+func insertNewUrl(ctx context.Context, s *ShortenerServer, s1 string, s2 string) {
 	insertSql := `
 	insert into urls (FullUrl,ShortUrl)
 	values ($1,$2);`
@@ -105,14 +105,11 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 }
 
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
-	//someshortlink := "abracadabra"
-	//fmt.Println(reflect.TypeOf(in))
 	linkFromDb := &LinkFromDb{}
 	err := s.db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", in.Link).Scan(&linkFromDb.id, &linkFromDb.full, &linkFromDb.short)
 	if err != nil {
 		fmt.Println(err)
 	}
-
 	return &pb.FullUrl{Url: linkFromDb.full}, nil
 }
 
