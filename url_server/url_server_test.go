@@ -2,6 +2,7 @@ package url_server
 
 import (
 	"context"
+	"fmt"
 	"github.com/stretchr/testify/require"
 	pb "golang_url_shortener/proto"
 	"golang_url_shortener/repository"
@@ -37,4 +38,7 @@ func TestShortenerServer_Get(t *testing.T) {
 	shortUrl, err := s.Get(context.Background(), &pb.ShortUrl{Link: "shorttest"})
 	require.Nil(t, err)
 	require.NotNil(t, shortUrl)
+
+	shortUrl, err = s.Get(context.Background(), &pb.ShortUrl{Link: "empty"})
+	require.Equal(t, fmt.Sprintln(err), fmt.Sprint("no rows in result set\n"))
 }

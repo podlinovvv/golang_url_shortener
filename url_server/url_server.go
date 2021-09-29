@@ -62,6 +62,7 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
 	shorturl, err := s.r.SearchShortUrlInDb(ctx, in.Link)
+
 	if err != nil {
 		return nil, err
 	}
