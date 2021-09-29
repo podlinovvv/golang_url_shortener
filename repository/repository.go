@@ -31,23 +31,13 @@ func NewRepository(pool *pgxpool.Pool) *Repository {
 	return &Repository{Db: pool}
 }
 
-func (r *Repository) FindMaxId(ctx context.Context) int {
-	var id int
-	err := r.Db.QueryRow(ctx, "SELECT MAX(Id) FROM urls").Scan(&id)
-	//fmt.Println(id, "id из базы")
-	if err != nil {
-		fmt.Println(id, err)
-	}
-	return id
-}
-
-func InitDb() (*pgxpool.Pool, error) {
+func InitDb(address string, port string) (*pgxpool.Pool, error) {
 	connStr := fmt.Sprintf("%s://%s:%s@%s:%s/?sslmode=disable&connect_timeout=%d",
 		"postgresql",
 		url.QueryEscape("db_user"),
 		url.QueryEscape("pwd123"),
-		"pgdb",
-		"5432",
+		address,
+		port,
 		15)
 	ctx := context.Background()
 
@@ -76,6 +66,16 @@ func InitDb() (*pgxpool.Pool, error) {
 	return pool, nil
 }
 
+func (r *Repository) FindMaxId(ctx context.Context) int {
+	var id int
+	err := r.Db.QueryRow(ctx, "SELECT MAX(Id) FROM urls").Scan(&id)
+	//fmt.Println(id, "id из базы")
+	if err != nil {
+		fmt.Println(id, err)
+	}
+	return id
+}
+
 func (r *Repository) SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *LinkFromDb {
 	linkFromDb := &LinkFromDb{}
 	err := r.Db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE FullUrl=$1 LIMIT 1;", in.Url).Scan(&linkFromDb.Id, &linkFromDb.Full, &linkFromDb.Short)
@@ -93,6 +93,7 @@ func (r *Repository) InsertNewUrl(ctx context.Context, s1 string, s2 string) err
 	return err
 
 }
+
 func (r *Repository) SearchShortUrlInDb(ctx context.Context, link string) (string, error) {
 	linkFromDb := &LinkFromDb{}
 	err := r.Db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", link).Scan(&linkFromDb.Id, &linkFromDb.Full, &linkFromDb.Short)

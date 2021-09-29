@@ -15,13 +15,13 @@ const (
 )
 
 func main() {
-	pool, err := repository.InitDb()
+	pool, err := repository.InitDb("pgdb", "5432")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	repository := repository.NewRepository(pool)
-	server := url_server.NewShortenerServer(repository)
+	repos := repository.NewRepository(pool)
+	server := url_server.NewShortenerServer(repos)
 
 	lis, err := net.Listen("tcp", port)
 	s := grpc.NewServer()
