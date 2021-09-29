@@ -41,7 +41,6 @@ func InitDb(address string, port string) (*pgxpool.Pool, error) {
 		15)
 	ctx := context.Background()
 
-	//Сконфигурируем пул, задав для него максимальное количество соединений
 	poolConfig, _ := pgxpool.ParseConfig(connStr)
 	poolConfig.MaxConns = 1
 
@@ -53,6 +52,7 @@ func InitDb(address string, port string) (*pgxpool.Pool, error) {
 	}
 	fmt.Println("Connection OK!")
 
+	//создание таблицы URLов
 	createSql := `
 	create table if not exists urls (
 		Id SERIAL PRIMARY KEY,
@@ -66,6 +66,7 @@ func InitDb(address string, port string) (*pgxpool.Pool, error) {
 	return pool, nil
 }
 
+//поиск максимального ID в базе
 func (r *Repository) FindMaxId(ctx context.Context) int {
 	var id int
 	err := r.Db.QueryRow(ctx, "SELECT MAX(Id) FROM urls").Scan(&id)
@@ -76,6 +77,7 @@ func (r *Repository) FindMaxId(ctx context.Context) int {
 	return id
 }
 
+//поиск полного URL в базе
 func (r *Repository) SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *LinkFromDb {
 	linkFromDb := &LinkFromDb{}
 	err := r.Db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE FullUrl=$1 LIMIT 1;", in.Url).Scan(&linkFromDb.Id, &linkFromDb.Full, &linkFromDb.Short)
@@ -85,6 +87,7 @@ func (r *Repository) SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *Lin
 	return linkFromDb
 }
 
+//добавление новой пары из полного и сокращённого URL
 func (r *Repository) InsertNewUrl(ctx context.Context, s1 string, s2 string) {
 	insertSql := `
 	insert into urls (FullUrl,ShortUrl)
@@ -93,6 +96,7 @@ func (r *Repository) InsertNewUrl(ctx context.Context, s1 string, s2 string) {
 	return
 }
 
+//поиск сокращённого URL в базе
 func (r *Repository) SearchShortUrlInDb(ctx context.Context, link string) (string, error) {
 	linkFromDb := &LinkFromDb{}
 	err := r.Db.QueryRow(ctx, "SELECT Id, FullUrl, ShortUrl FROM urls WHERE ShortUrl=$1 LIMIT 1;", link).Scan(&linkFromDb.Id, &linkFromDb.Full, &linkFromDb.Short)

@@ -2,7 +2,6 @@ package url_server
 
 import (
 	"context"
-	"fmt"
 	pb "golang_url_shortener/proto"
 	"golang_url_shortener/repository"
 	"strconv"
@@ -25,13 +24,14 @@ func NewShortenerServer(r *repository.Repository) *ShortenerServer {
 	return &ShortenerServer{r: r}
 }
 
+//создание короткого URl из ID
 func GenerateShortUrl(id int) string {
-	number := strconv.Itoa(id)
+	number := strconv.Itoa(id + 1)
 	var inBase string = "0123456789"
 	var toBase string = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
 	converted, _, _ := bc.BaseToBase(number, inBase, toBase)
 	var nulled string = ""
-	for i := 0; i < (10 - len(converted)); i++ {
+	for i := 0; i < (10 - len(converted[:])); i++ {
 		nulled = nulled + "0"
 	}
 	nulled = nulled + converted
@@ -59,9 +59,9 @@ func (s *ShortenerServer) Create(ctx context.Context, in *pb.FullUrl) (*pb.Short
 	return &pb.ShortUrl{Link: result}, nil
 }
 
+//поиск полного URL в базе по сокращённому
 func (s *ShortenerServer) Get(ctx context.Context, in *pb.ShortUrl) (*pb.FullUrl, error) {
 	shorturl, err := s.r.SearchShortUrlInDb(ctx, in.Link)
-
 	if err != nil {
 		return nil, err
 	}

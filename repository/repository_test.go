@@ -2,6 +2,7 @@ package repository
 
 import (
 	"context"
+	"fmt"
 	"github.com/stretchr/testify/require"
 	pb "golang_url_shortener/proto"
 	"log"
@@ -19,7 +20,7 @@ func TestRepository_FindMaxId(t *testing.T) {
 
 	testInsert := `
 	insert into urls (FullUrl,ShortUrl)
-	values ('fulltest','shorttest');`
+	values ('fulltest','shorttest1');`
 	_, err = repos.Db.Exec(context.Background(), testInsert)
 	if err != nil {
 	}
@@ -29,13 +30,13 @@ func TestRepository_FindMaxId(t *testing.T) {
 
 func TestRepository_SearchFullUrlInDb(t *testing.T) {
 
-	l := repos.SearchFullUrlInDb(context.Background(), &pb.FullUrl{Url: "fulltest2"})
-	_ = l
+	l := repos.SearchFullUrlInDb(context.Background(), &pb.FullUrl{Url: "fulltest"})
 	require.GreaterOrEqual(t, l.Id, 0)
-	require.Equal(t, len(l.Short), 10)
+	fmt.Println(l.Short)
+	require.Equal(t, 10, len(l.Short))
 }
 
 func TestRepository_SearchShortUrlInDb(t *testing.T) {
-	_, err := repos.SearchShortUrlInDb(context.Background(), "shorttest2")
+	_, err := repos.SearchShortUrlInDb(context.Background(), "shorttest1")
 	require.Nil(t, err)
 }

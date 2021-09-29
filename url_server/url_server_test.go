@@ -14,7 +14,7 @@ var s *ShortenerServer
 
 func TestGenerateShortUrl(t *testing.T) {
 	require.Equal(t, len(GenerateShortUrl(10)), 10)
-	require.Equal(t, GenerateShortUrl(63), "0000000010")
+	require.Equal(t, GenerateShortUrl(63), "0000000011")
 }
 func TestShortenerServer_Create(t *testing.T) {
 	pool, err := repository.InitDb("localhost", "54320")
@@ -26,7 +26,7 @@ func TestShortenerServer_Create(t *testing.T) {
 
 	testInsert := `
 	insert into urls (FullUrl,ShortUrl)
-	values ('fulltest','shorttest');`
+	values ('fulltest','shorttest3');`
 	_, err = repos.Db.Exec(context.Background(), testInsert)
 	if err != nil {
 	}
@@ -35,7 +35,7 @@ func TestShortenerServer_Create(t *testing.T) {
 	require.Nil(t, err)
 }
 func TestShortenerServer_Get(t *testing.T) {
-	shortUrl, err := s.Get(context.Background(), &pb.ShortUrl{Link: "shorttest"})
+	shortUrl, err := s.Get(context.Background(), &pb.ShortUrl{Link: "shorttest3"})
 	require.Nil(t, err)
 	require.NotNil(t, shortUrl)
 
