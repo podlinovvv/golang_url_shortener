@@ -19,7 +19,7 @@ type LinkFromDb struct {
 type IRepository interface {
 	FindMaxId(ctx context.Context) int
 	SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *LinkFromDb
-	InsertNewUrl(ctx context.Context, s1 string, s2 string) error
+	InsertNewUrl(ctx context.Context, s1 string, s2 string)
 	SearchShortUrlInDb(ctx context.Context, link string) (string, error)
 }
 
@@ -85,13 +85,12 @@ func (r *Repository) SearchFullUrlInDb(ctx context.Context, in *pb.FullUrl) *Lin
 	return linkFromDb
 }
 
-func (r *Repository) InsertNewUrl(ctx context.Context, s1 string, s2 string) error {
+func (r *Repository) InsertNewUrl(ctx context.Context, s1 string, s2 string) {
 	insertSql := `
 	insert into urls (FullUrl,ShortUrl)
 	values ($1,$2);`
-	_, err := r.Db.Exec(ctx, insertSql, s1, s2)
-	return err
-
+	_, _ = r.Db.Exec(ctx, insertSql, s1, s2)
+	return
 }
 
 func (r *Repository) SearchShortUrlInDb(ctx context.Context, link string) (string, error) {

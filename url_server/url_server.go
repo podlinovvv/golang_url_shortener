@@ -35,7 +35,6 @@ func GenerateShortUrl(id int) string {
 		nulled = nulled + "0"
 	}
 	nulled = nulled + converted
-	fmt.Println(nulled)
 	return nulled
 }
 
