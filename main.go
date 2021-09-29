@@ -29,26 +29,5 @@ func main() {
 
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve %v", err)
-
 	}
-	//testInsert := `
-	//insert into urls (FullUrl,ShortUrl)
-	//values ('fulltest','shorttest');`
-	//_, err = server.Db.Exec(context.Background(), testInsert)
-	//if err != nil {
-	//}
-	//
-	//testInsert = `
-	//insert into urls (FullUrl,ShortUrl)
-	//values ('fulltest2','shorttest2');`
-	//_, err = server.Db.Exec(context.Background(), testInsert)
-	//if err != nil {
-	//}
-	//
-	//testInsert = `
-	//insert into urls (FullUrl,ShortUrl)
-	//values ('fulltest3','shorttest3');`
-	//_, err = server.Db.Exec(context.Background(), testInsert)
-	//if err != nil {
-	//}
 }
